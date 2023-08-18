@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Base script
-# Basic and manditory settings for the base of a CustomPiOS build
-# Written by Guy Sheffer <guysoft at gmail dot com>
+# Basic and manditory settings for the base of a anbnkiOS build
+# Written by Guy Sheffer <Maruff at gmail dot com>
 # GPL V3
 ########
 set -ex

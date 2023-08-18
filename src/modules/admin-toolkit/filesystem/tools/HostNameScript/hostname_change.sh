@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Helper script from the CustomPiOS admin-toolkit module
+# Helper script from the anbnkiOS admin-toolkit module
 
 #only run if root
 if [ `whoami` != root ]; then

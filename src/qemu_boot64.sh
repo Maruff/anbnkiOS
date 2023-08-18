@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Script to start any CustomPiOS raspbian image from qemu
+# Script to start any anbnkiOS raspbian image from qemu
 # Usage: qemu_boot.sh </path/to/zip/with/img/file.zip>
 set -x
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"

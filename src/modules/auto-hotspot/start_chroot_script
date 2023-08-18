@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -x
 set -e
-# CustomPiOS auto-hotspot module
+# anbnkiOS auto-hotspot module
 # Script sets up an automatic hotspot if no wifi is found
 # Based on http://www.raspberryconnect.com/network/item/330-raspberry-pi-auto-wifi-hotspot-switch-internet
-# Written by Guy Sheffer <guysoft at gmail dot com>
+# Written by Guy Sheffer <Maruff at gmail dot com>
 # GPL V3
 ########
 

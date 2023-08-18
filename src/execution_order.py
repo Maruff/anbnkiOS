@@ -53,7 +53,7 @@ def parse(a, callback):
     return
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(add_help=True, description='Parse and run CustomPiOS chroot modules')
+    parser = argparse.ArgumentParser(add_help=True, description='Parse and run anbnkiOS chroot modules')
     parser.add_argument('modules', type=str, help='A string showing how the modules should be called')
     parser.add_argument('output_script', type=str, help='path to output the chroot script master')
     args = parser.parse_args()

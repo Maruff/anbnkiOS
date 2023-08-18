@@ -1,15 +1,15 @@
-image: guysoft/custompios:devel
+image: Maruff/anbnkiOS:devel
 manifests:
-  - image: guysoft/custompios:amd64
+  - image: Maruff/anbnkiOS:amd64
     platform:
       architecture: amd64
       os: linux
-  - image: guysoft/custompios:arm32v7
+  - image: Maruff/anbnkiOS:arm32v7
     platform:
       architecture: arm
       os: linux
       variant: v7
-  - image: guysoft/custompios:arm64v8
+  - image: Maruff/anbnkiOS:arm64v8
     platform:
       architecture: arm64
       os: linux

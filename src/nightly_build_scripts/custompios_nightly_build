@@ -3,7 +3,7 @@ set -x
 set -e
 
 export DIST_PATH=/distro
-export CUSTOM_PI_OS_PATH=/CustomPiOS
+export CUSTOM_PI_OS_PATH=/anbnkiOS
 
 source "$CUSTOM_PI_OS_PATH/argparse.bash" || exit 1
 argparse "$@" <<EOF || exit 1

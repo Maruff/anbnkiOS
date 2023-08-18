@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# CustomPiOS generation script
-# Helper script that runs in a Raspbian chroot to create the CustomPiOS distro gui module
+# anbnkiOS generation script
+# Helper script that runs in a Raspbian chroot to create the anbnkiOS distro gui module
 # Written by asdfinit
 # GPL V3
 

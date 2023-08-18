@@ -1,10 +1,10 @@
 version: '3.6'
 
 services:
-  custompios:
+  anbnkiOS:
     build:
       context: .
-    container_name: custompios
+    container_name: anbnkiOS
     tty: true
     restart: always
     privileged: true

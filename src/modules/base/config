@@ -2,7 +2,7 @@
 ###############################################################################
 # All our config settings must start with BASE_
 
-# CustomPiOS version
+# anbnkiOS version
 BASE_VERSION=1.5.0
 
 [ -n "$BASE_PRESCRIPT" ] || BASE_PRESCRIPT=
@@ -84,7 +84,7 @@ fi
 # Enable ssh daemon
 [ -n "$BASE_SSH_ENABLE" ] || BASE_SSH_ENABLE=yes
 
-#Store the commit used for CustomPiOS
+#Store the commit used for anbnkiOS
 [ -n "$BASE_COMMIT" ] || BASE_COMMIT=`pushd "${CUSTOM_PI_OS_PATH}" > /dev/null ; git rev-parse HEAD ; popd > /dev/null`
 
 #Memory split

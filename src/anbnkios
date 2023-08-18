@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # OctoPi generation script
 # This script takes a Raspbian image and adds to it octoprint and verions addons
-# Written by Guy Sheffer <guysoft at gmail dot com>
+# Written by Guy Sheffer <Maruff at gmail dot com>
 # GPL V3
 set -e
 
@@ -73,16 +73,16 @@ function execute_chroot_script() {
   fi
   
   # Handle exported items
-  if [ -d "custompios_export" ]; then
+  if [ -d "anbnkiOS_export" ]; then
     echo "Exporting files from chroot"
     echo "List of archies to create:"
-    ls custompios_export
+    ls anbnkiOS_export
     # Tar files listed in export
-    for export_list in custompios_export/* ; do
+    for export_list in anbnkiOS_export/* ; do
       tar --absolute-names -czvf "${BASE_WORKSPACE}/$(basename ${export_list}).tar.gz" -T ${export_list}
     done
     
-    rm -rf custompios_export
+    rm -rf anbnkiOS_export
   fi
   
   #cleanup

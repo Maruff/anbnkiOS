@@ -2,5 +2,5 @@
 Version=1.0
 Name=GUISession
 Exec=/home/pi/scripts/start_gui
-Comment=Startup of the minimal CustomPiOS GUI
+Comment=Startup of the minimal anbnkiOS GUI
 Type=Application

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# This script is part of the CustomPiOS admin-toolkit module
+# This script is part of the anbnkiOS admin-toolkit module
 
 UFW_PORTS_UDP=no
 UFW_PORTS_TCP=no

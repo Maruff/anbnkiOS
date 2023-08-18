@@ -22,7 +22,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v3.5.0
         with:
-          images: guysoft/custompios
+          images: Maruff/anbnkiOS
           tag-sha: true
       -
         name: Set up Docker Buildx
