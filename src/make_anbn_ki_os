@@ -50,7 +50,7 @@ chown -R "${USER}":"$(id -gn "${USER}")" "${DEST}"
 
 "${DIR}/dist_generators/dist_example_script" "${DEST}"
 
-"$DIR/update-anbnkiOS-paths" "${DEST}/src"
+"$DIR/update-anbnkios-paths" "${DEST}/src"
 
 if [ "$GET_IMAGE" ]; then
     echo -n "Downloading latest Raspbian image"
