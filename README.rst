@@ -131,14 +131,15 @@ Build a Distro From within Raspbian / Debian / Ubuntu / anbnkiOS Distros
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 anbnkiOS distros can be built from Debian, Ubuntu, Raspbian, or even within a distro itself (for other systems use the Vagrant build option). Build requires about 2.5 GB of free space available, depending on what you install. You can build it by issuing the following commands::
 
-sudo apt-get install gawk util-linux realpath qemu-user-static p7zip-full git
+    sudo apt-get install gawk util-linux realpath qemu-user-static p7zip-full git
+    
+    git clone https://github.com/guysoft/anbnkiOS.git
+    cd anbnkiOS/src
+    ./make_anbn_ki_os -g /path/to/new_distro
+    cd /path/to/new_distro/src
+    sudo modprobe loop
+    sudo bash -x ./build_dist    
 
-git clone https://github.com/guysoft/anbnkiOS.git
-cd anbnkiOS/src
-./make_anbn_ki_os -g /path/to/new_distro
-cd /path/to/new_distro/src
-sudo modprobe loop
-sudo bash -x ./build_dist
     
 Building Distro Variants
 ~~~~~~~~~~~~~~~~~~~~~~~~
