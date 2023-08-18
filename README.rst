@@ -129,7 +129,7 @@ The naming convention is the module name in
 
 Build a Distro From within Raspbian / Debian / Ubuntu / anbnkiOS Distros
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-anbnkiOS distros can be built from Debian, Ubuntu, Raspbian, or even within a distro itself (for other systems use the Vagrant build option). Build requires about 2.5 GB of free space available, depending on what you install. You can build it by issuing the following commands:
+anbnkiOS distros can be built from Debian, Ubuntu, Raspbian, or even within a distro itself (for other systems use the Vagrant build option). Build requires about 2.5 GB of free space available, depending on what you install. You can build it by issuing the following commands::
 
 sudo apt-get install gawk util-linux realpath qemu-user-static p7zip-full git
 
