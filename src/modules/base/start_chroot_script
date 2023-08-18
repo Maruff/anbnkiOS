@@ -132,7 +132,7 @@ then
 fi
 
 # Store version buildbase
-echo "$CUSTOM_PI_OS_BUILDBASE" > /etc/anbnkiOS_buildbase
+echo "$ANBN_KI_OS_BUILDBASE" > /etc/anbnkiOS_buildbase
 
 # Store dist version
 echo "$DIST_VERSION" > /etc/${DIST_NAME,,}_version

@@ -68,7 +68,7 @@ Known to work building configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 1. Using the `anbnkiOS docker image <https://hub.docker.com/r/Maruff/anbnkiOS>`_
 2. Linux (Ubuntu / Debian / Gentoo etc)
-3. OS X -  `See this thread for information <https://github.com/guysoft/OctoPi/issues/388#issuecomment-316327106>`_
+3. OS X -  `See this thread for information <https://github.com/oft/OctoPi/issues/388#issuecomment-316327106>`_
 
 
 Modules 

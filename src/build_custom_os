@@ -2,7 +2,7 @@
 set -e
 set -x
 echo "Distro path: ${DIST_PATH}"
-echo "anbnkiOS path: ${CUSTOM_PI_OS_PATH}"
+echo "anbnkiOS path: ${ANBN_KI_OS_PATH}"
 echo "================================================================"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ${DIR}/build $1

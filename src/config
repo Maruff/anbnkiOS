@@ -30,8 +30,8 @@ if [ $BUILD_VARIANT != 'default' ]; then
   
   if [ -d "${DIST_PATH}/variants/$BUILD_VARIANT" ]; then
     export VARIANT_BASE="${DIST_PATH}/variants/$BUILD_VARIANT"
-  elif [ -d "${CUSTOM_PI_OS_PATH}/variants/$BUILD_VARIANT" ]; then
-    export VARIANT_BASE="${CUSTOM_PI_OS_PATH}/variants/$BUILD_VARIANT"
+  elif [ -d "${ANBN_KI_OS_PATH}/variants/$BUILD_VARIANT" ]; then
+    export VARIANT_BASE="${ANBN_KI_OS_PATH}/variants/$BUILD_VARIANT"
   else
     die "Could not find Variant $BUILD_VARIANT"
   fi
@@ -85,8 +85,8 @@ for module in $(echo "${MODULES_LIST}" | tr "," "\n")
 do
     if [ -d "${DIST_PATH}/modules/${module}" ]; then
         export MODULE_PATH="${DIST_PATH}/modules/${module}"
-    elif   [ -d "${CUSTOM_PI_OS_PATH}/modules/${module}" ]; then
-        export MODULE_PATH="${CUSTOM_PI_OS_PATH}/modules/${module}"
+    elif   [ -d "${ANBN_KI_OS_PATH}/modules/${module}" ]; then
+        export MODULE_PATH="${ANBN_KI_OS_PATH}/modules/${module}"
     fi
     
     echo loading $module config at ${MODULE_PATH}/config

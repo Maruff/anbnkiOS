@@ -6,7 +6,7 @@ def handle(module, state, out):
     out.write("# " + state + "_" + module + "\n")
     
     module_folders = [os.path.join(os.environ['DIST_PATH'], "modules", module),
-                      os.path.join(os.environ['CUSTOM_PI_OS_PATH'], "modules", module)
+                      os.path.join(os.environ['ANBN_KI_OS_PATH'], "modules", module)
         ]
     
     for module_folder in module_folders:
