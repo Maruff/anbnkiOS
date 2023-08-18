@@ -27,8 +27,7 @@ argparse(){
     cat > "$argparser" <<EOF
 from __future__ import print_function
 import sys
-from argparse import ArgumentParser
-# import argparse
+import argparse
 import os
 
 
