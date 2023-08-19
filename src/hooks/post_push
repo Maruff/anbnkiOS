@@ -40,8 +40,8 @@ function docker_tag_exists() {
 }
 
 # Example: values
-# ${DOCKER_REPO} = index.docker.io/Maruff/anbnkiOS-test
-# ${IMAGE_NAME} = index.docker.io/Maruff/anbnkiOS-test:1.2.4-amd64
+# ${DOCKER_REPO} = index.docker.io/Maruff/anbnkios-test
+# ${IMAGE_NAME} = index.docker.io/Maruff/anbnkios-test:1.2.4-amd64
 # ${DOCKER_TAG} = 1.2.4-amd64
 
 
@@ -64,7 +64,7 @@ else
   NAME=${USER_NAME}/${REPO_NAME}
   
   # Example: values
-  # ${NAME} = Maruff/anbnkiOS
+  # ${NAME} = Maruff/anbnkios
   # ${RELEASE_TAG} = 1.2.3
   
   generate_manifest "${NAME}" "${RELEASE_TAG}"

@@ -1,7 +1,7 @@
 anbnkiOS
 ==========
 
-.. image:: https://raw.githubusercontent.com/Maruff/anbnkios/devel/media/anbnkiOS.png
+.. image:: https://raw.githubusercontent.com/Maruff/anbnkiOS/devel/media/anbnkiOS.png
 .. :scale: 50 %
 .. :alt: anbnkiOS logo
 
@@ -66,14 +66,14 @@ Requirements
 
 Known to work building configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-1. Using the `anbnkiOS docker image <https://hub.docker.com/r/Maruff/anbnkiOS>`_
+1. Using the `anbnkiOS docker image <https://hub.docker.com/r/Maruff/anbnkios>`_
 2. Linux (Ubuntu / Debian / Gentoo etc)
 3. OS X -  `See this thread for information <https://github.com/oft/OctoPi/issues/388#issuecomment-316327106>`_
 
 
 Modules 
 -------
-`See Modules entry in wiki <https://github.com/Maruff/anbnkios/wiki/Modules>`_
+`See Modules entry in wiki <https://github.com/Maruff/anbnkiOS/wiki/Modules>`_
 
 
 chroot_script
@@ -106,7 +106,7 @@ Export files from image
 anbnkiOS has a feature to export files created in the chroot to archives you can ship as a tar.gz archive.
 
 To export run inside of a chroot_script:
-``anbnkiOS_export [name of archive] [file path in chroot]``
+``anbnkios_export [name of archive] [file path in chroot]``
 
 You can also use:
 ``copy_and_export [name of archive] [source] [destination]``
@@ -134,7 +134,7 @@ anbnkiOS distros can be built from Debian, Ubuntu, Raspbian, or even within a di
     sudo apt-get install gawk util-linux realpath qemu-user-static p7zip-full git
     
     git clone https://github.com/Maruff/anbnkiOS.git
-    cd anbnkios/src
+    cd anbnkiOS/src
     ./make_anbn_ki_os -g /path/to/new_distro
     cd /path/to/new_distro/src
     sudo modprobe loop
@@ -143,15 +143,15 @@ anbnkiOS distros can be built from Debian, Ubuntu, Raspbian, or even within a di
     
 Building Distro Variants
 ~~~~~~~~~~~~~~~~~~~~~~~~
-`See building entry in wiki <https://github.com/Maruff/anbnkios/wiki/Building>`_
+`See building entry in wiki <https://github.com/Maruff/anbnkiOS/wiki/Building>`_
 
 Building Using Docker
 ~~~~~~~~~~~~~~~~~~~~~~
-`See Building with docker entry in wiki <https://github.com/Maruff/anbnkios/wiki/Building-with-Docker>`_
+`See Building with docker entry in wiki <https://github.com/Maruff/anbnkiOS/wiki/Building-with-Docker>`_
     
 Building Using Vagrant
 ~~~~~~~~~~~~~~~~~~~~~~
-`See Building with Vagrant entry in wiki <https://github.com/Maruff/anbnkios/wiki/Building-with-Vagrant>`_
+`See Building with Vagrant entry in wiki <https://github.com/Maruff/anbnkiOS/wiki/Building-with-Vagrant>`_
 
 Build using CI/CD
 ~~~~~~~~~~~~~~~~~

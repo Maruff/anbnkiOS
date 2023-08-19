@@ -520,31 +520,31 @@ function systemctl_if_exists() {
 }
 
 
-function anbnkiOS_export(){
+function anbnkios_export(){
   # Export files in the image to an archive in the workspace folder
-  # Usage: anbnkiOS_export [archive name] [files]
-  mkdir -p /anbnkiOS_export
+  # Usage: anbnkios_export [archive name] [files]
+  mkdir -p /anbnkios_export
   for i in "${@:2}"; do
-        echo "${i#?}" >> /anbnkiOS_export/"${1}"
+        echo "${i#?}" >> /anbnkios_export/"${1}"
   done
 }
 
 function copy_and_export(){
   # Will copy like cp, and then save it for export
   # Usage: copy_and_export tar_file_name source(s) destination
-  export -f anbnkiOS_export
+  export -f anbnkios_export
   OUTPUT=$1
   shift
-  cp -v $@ | awk -F  "' -> '"  '{print substr($2, 1, length($2)-1)}' | xargs -d"\n" -t bash -x -c 'anbnkiOS_export '${OUTPUT}' "$@"' _
+  cp -v $@ | awk -F  "' -> '"  '{print substr($2, 1, length($2)-1)}' | xargs -d"\n" -t bash -x -c 'anbnkios_export '${OUTPUT}' "$@"' _
 }
 
 function copy_and_export_folder(){
   # Will copy a folder, and then save it for export, similar to copy_and_export
   # Usage: copy_and_export_folder tar_file_name source destination
-  export -f anbnkiOS_export
+  export -f anbnkios_export
   OUTPUT=$1
   shift
-  cp -va $@ | awk -F  "' -> '"  '{print substr($2, 1, length($2)-1)}' | xargs -d"\n" -t bash -x -c 'anbnkiOS_export '${OUTPUT}' "$@"' _
+  cp -va $@ | awk -F  "' -> '"  '{print substr($2, 1, length($2)-1)}' | xargs -d"\n" -t bash -x -c 'anbnkios_export '${OUTPUT}' "$@"' _
 }
 
 function set_config_var() {

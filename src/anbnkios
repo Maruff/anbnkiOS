@@ -73,16 +73,16 @@ function execute_chroot_script() {
   fi
   
   # Handle exported items
-  if [ -d "anbnkiOS_export" ]; then
+  if [ -d "anbnkios_export" ]; then
     echo "Exporting files from chroot"
     echo "List of archies to create:"
-    ls anbnkiOS_export
+    ls anbnkios_export
     # Tar files listed in export
-    for export_list in anbnkiOS_export/* ; do
+    for export_list in anbnkios_export/* ; do
       tar --absolute-names -czvf "${BASE_WORKSPACE}/$(basename ${export_list}).tar.gz" -T ${export_list}
     done
     
-    rm -rf anbnkiOS_export
+    rm -rf anbnkios_export
   fi
   
   #cleanup

@@ -1,15 +1,15 @@
-image: Maruff/anbnkiOS:devel
+image: Maruff/anbnkios:devel
 manifests:
-  - image: Maruff/anbnkiOS:amd64
+  - image: Maruff/anbnkios:amd64
     platform:
       architecture: amd64
       os: linux
-  - image: Maruff/anbnkiOS:arm32v7
+  - image: Maruff/anbnkios:arm32v7
     platform:
       architecture: arm
       os: linux
       variant: v7
-  - image: Maruff/anbnkiOS:arm64v8
+  - image: Maruff/anbnkios:arm64v8
     platform:
       architecture: arm64
       os: linux

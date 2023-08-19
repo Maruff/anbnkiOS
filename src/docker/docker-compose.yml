@@ -1,8 +1,8 @@
 version: '3.6'
 
 services:
-  anbnkiOS:
-    image: Maruff/anbnkiOS:devel
+  anbnkios:
+    image: Maruff/anbnkios:devel
     container_name: ${DISTRO_NAME}-build
     tty: true
     restart: always

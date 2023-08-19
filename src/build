@@ -18,7 +18,7 @@ CUSTOM_OS_PATH=$(dirname $(realpath -s $0))
 source ${ANBN_KI_OS_PATH}/config ${@}
 ${ANBN_KI_OS_PATH}/config_sanity
 
-[ "$CONFIG_ONLY" == "yes" ] || source ${CUSTOM_OS_PATH}/anbnkiOS
+[ "$CONFIG_ONLY" == "yes" ] || source ${CUSTOM_OS_PATH}/anbnkios
 EOF
 
 if [ "$LOG" != "no" ]; then

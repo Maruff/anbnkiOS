@@ -23,7 +23,7 @@ RUN set -x \
         lsof \
     && rm -rf /var/lib/apt/lists/*
 
-RUN ln -s /anbnkios/nightly_build_scripts/anbnkiOS_nightly_build /usr/bin/build
+RUN ln -s /anbnkiOS/nightly_build_scripts/anbnkios_nightly_build /usr/bin/build
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
 COPY . /anbnkiOS

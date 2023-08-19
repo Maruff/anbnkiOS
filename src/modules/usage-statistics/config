@@ -6,7 +6,7 @@
 ########
 
 # URL to the tracking server
-[ -n "$USAGE_STATISTICS_URL" ] || USAGE_STATISTICS_URL=https://CustomPiOS-tracking.gnethomelinux.com
+[ -n "$USAGE_STATISTICS_URL" ] || USAGE_STATISTICS_URL=https://custompios-tracking.gnethomelinux.com
 
 # The file name that holds teh distro version
 [ -n "$USAGE_STATISTICS_VERSION_FILE" ] || USAGE_STATISTICS_VERSION_FILE=/etc/${DIST_NAME,,}_version

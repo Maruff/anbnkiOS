@@ -1,10 +1,10 @@
 version: '3.6'
 
 services:
-  anbnkiOS:
+  anbnkios:
     build:
       context: .
-    container_name: anbnkiOS
+    container_name: anbnkios
     tty: true
     restart: always
     privileged: true
