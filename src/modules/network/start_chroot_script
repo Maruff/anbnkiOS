@@ -17,7 +17,7 @@ unpack /filesystem/boot /"${BASE_BOOT_MOUNT_PATH}"
 DIST_NETWORK_FILE=/"${BASE_BOOT_MOUNT_PATH}"/${DIST_NAME,,}-wpa-supplicant.txt
 
 # allow configuring multiple wifi networks via /boot/DIST_NAME-wpa-supplicant.txt
-mv /"${BASE_BOOT_MOUNT_PATH}"/anbnkios-wpa-supplicant.txt ${DIST_NETWORK_FILE}
+mv /"${BASE_BOOT_MOUNT_PATH}"/anbn-kios-wpa-supplicant.txt ${DIST_NETWORK_FILE}
 
 if [ "${BASE_DISTRO}" == "ubuntu" ] || [ "${BASE_DISTRO}" == "armbian" ]; then
     echo "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev" > /etc/wpa_supplicant/wpa_supplicant.conf
