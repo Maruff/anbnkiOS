@@ -134,7 +134,7 @@ anbnkiOS distros can be built from Debian, Ubuntu, Raspbian, or even within a di
     sudo apt-get install gawk util-linux realpath qemu-user-static p7zip-full git
     
     git clone https://github.com/Maruff/anbnkiOS.git
-    cd anbnkiOS/src
+    cd anbnkios/src
     ./make_anbn_ki_os -g /path/to/new_distro
     cd /path/to/new_distro/src
     sudo modprobe loop
