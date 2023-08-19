@@ -19,7 +19,7 @@ Also many thanks to people contributing code.
 |paypal|
 
 .. |paypal| image:: https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif
-   :target: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=26VJ9MSBH3V3W&source=url
+   :target: https://paypal.me/bizwear?country.x=QA&locale.x=en_US
 
 Where to get it?
 ----------------
@@ -135,8 +135,9 @@ anbnkiOS distros can be built from Debian, Ubuntu, Raspbian, or even within a di
     
     git clone https://github.com/Maruff/anbnkiOS.git
     cd anbnkiOS/src
-    ./make_anbn_ki_os -g /path/to/new_distro
-    cd /path/to/new_distro/src
+    chmod 755 *
+    sudo ./make_anbn_ki_os -g anbnkiOS
+    cd anbnkiOS/src
     sudo modprobe loop
     sudo bash -x ./build_dist    
 
