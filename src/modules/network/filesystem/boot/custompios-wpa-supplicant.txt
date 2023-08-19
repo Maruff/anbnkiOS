@@ -24,10 +24,10 @@
 # work!
 
 ## WPA/WPA2 secured
-#network={
-#  ssid="put SSID here"
-#  psk="put password here"
-#}
+network={
+  ssid="Unionfire"
+  psk="Union@2016"
+}
 
 ## Open/unsecured
 #network={
