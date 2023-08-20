@@ -3,7 +3,8 @@ set -x
 set -e
 # anbnkiOS generation script
 # Helper script that runs in a Raspbian chroot to create the anbnkiOS distro gui module
-# Written by Guy Sheffer <Maruff at gmail dot com>
+# Written by Guy Sheffer 
+# Updated by Esan Maruff <bmaruff at gmail dot com>
 # GPL V3
 
 source /common.sh

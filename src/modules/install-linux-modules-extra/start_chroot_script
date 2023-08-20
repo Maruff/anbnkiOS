@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # PleromaPi module
 # installs linux-modules-extra with a hack
-# Written by Guy Sheffer <Maruff at gmail dot com>
+# Written by Guy Sheffer 
+# Updated by <bmaruff at gmail dot com>
 # GPL V3
 ########
 
