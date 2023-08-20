@@ -1,0 +1,41 @@
+###############################################################################
+#override timezone, otherwise use image timezone
+[ -n "$FULLPAGEOS_OVERRIDE_TIMEZONE" ] || FULLPAGEOS_OVERRIDE_TIMEZONE=default
+
+#override locale, otherwise use image locale
+# Run locale -a to get a list of the locale names suitable for use in environment variables. Note that the spellings are different from the ones presented in the dpkg-reconfigure list.
+# More information at https://wiki.debian.org/Locale#Standard
+[ -n "$FULLPAGEOS_OVERRIDE_LOCALE" ] || FULLPAGEOS_OVERRIDE_LOCALE=default
+
+#override keyboard model and layout, otherwise use image default
+# see `man keyboard` for more information and the file
+# `/usr/share/X11/xkb/rules/xorg.lst` for the list of models and layouts
+[ -n "$FULLPAGEOS_OVERRIDE_KBD_MODEL" ] || FULLPAGEOS_OVERRIDE_KBD_MODEL=default
+[ -n "$FULLPAGEOS_OVERRIDE_KBD_LAYOUT" ] || FULLPAGEOS_OVERRIDE_KBD_LAYOUT=default
+
+#override password, otherwise use image default
+[ -n "$FULLPAGEOS_OVERRIDE_PASSWORD" ] || FULLPAGEOS_OVERRIDE_PASSWORD=default
+
+[ -n "$FULLPAGEOS_INCLUDE_CHROMIUM" ] || FULLPAGEOS_INCLUDE_CHROMIUM=yes
+[ -n "$FULLPAGEOS_INCLUDE_LIGHTTPD" ] || FULLPAGEOS_INCLUDE_LIGHTTPD=yes
+
+# FullPageDashboard repo & branch
+[ -n "$FULLPAGEOS_DASHBOARD_REPO_SHIP" ] || FULLPAGEOS_DASHBOARD_REPO_SHIP=https://github.com/amitdar/FullPageDashboard.git
+[ -n "$FULLPAGEOS_DASHBOARD_REPO_BUILD" ] || FULLPAGEOS_DASHBOARD_REPO_BUILD=
+[ -n "$FULLPAGEOS_DASHBOARD_REPO_BRANCH" ] || FULLPAGEOS_DASHBOARD_REPO_BRANCH=master
+[ -n "$FULLPAGEOS_INCLUDE_DASHBOARD" ] || FULLPAGEOS_INCLUDE_DASHBOARD=yes
+
+# FullPageDashboard repo & branch
+[ -n "$FULLPAGEOS_WELCOME_REPO_SHIP" ] || FULLPAGEOS_WELCOME_REPO_SHIP=https://github.com/tailorvj/FullPageOSWelcome.git
+[ -n "$FULLPAGEOS_WELCOME_REPO_BUILD" ] || FULLPAGEOS_WELCOME_REPO_BUILD=
+[ -n "$FULLPAGEOS_WELCOME_REPO_BRANCH" ] || FULLPAGEOS_WELCOME_REPO_BRANCH=master
+[ -n "$FULLPAGEOS_INCLUDE_WELCOME" ] || FULLPAGEOS_INCLUDE_WELCOME=yes
+
+# Add GPU acceleration
+[ -n "$FULLPAGEOS_INCLUDE_ACCELERATION" ] || FULLPAGEOS_INCLUDE_ACCELERATION=yes
+
+# Enable custom Splashscreen. Put your picture into FullPageOS/modules/fullpageos/filesystem/home/pi/media/splash.png
+[ -n "$FULLPAGEOS_CUSTOM_SPLASHSCREEN" ] || FULLPAGEOS_CUSTOM_SPLASHSCREEN=yes
+
+# Install and enable x11vnc service
+[ -n "$FULLPAGEOS_INCLUDE_X11VNC" ] || FULLPAGEOS_INCLUDE_X11VNC=yes
