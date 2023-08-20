@@ -170,10 +170,10 @@ if [ "$ADMIN_TOOLKIT_SCREEN_ROTATION" != "normal" ]
 then
     # Handle rotation if the gui module closes after this module
     echo "Adding screen rotation..."
-    if grep -q "GUI_SESSION_PLACEHOLDEFR" /home/pi/scripts/start_gui ; then
-        sed -i /home/pi/scripts/start_gui -e "s/^GUI_SESSION_PLACEHOLDEFR/export DISPLAY=:0/"
+    if grep -q "GUI_SESSION_PLACEHOLDER" /home/pi/scripts/start_gui ; then
+        sed -i /home/pi/scripts/start_gui -e "s/^GUI_SESSION_PLACEHOLDER/export DISPLAY=:0/"
         echo "/home/pi/scripts/rotate.sh $ADMIN_TOOLKIT_SCREEN_ROTATION"  >> /home/pi/scripts/start_gui
-        echo 'GUI_SESSION_PLACEHOLDEFR' >> /home/pi/scripts/start_gui
+        echo 'GUI_SESSION_PLACEHOLDER' >> /home/pi/scripts/start_gui
     elif grep -q "/home/pi/scripts/run_onepageos" /home/pi/scripts/start_gui ; then
         sed -i /home/pi/scripts/start_gui -e "s/^\/home\/pi\/scripts\/run_onepageos/export DISPLAY=:0/"
         echo "/home/pi/scripts/rotate.sh $ADMIN_TOOLKIT_SCREEN_ROTATION"  >> /home/pi/scripts/start_gui

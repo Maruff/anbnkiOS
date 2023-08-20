@@ -20,4 +20,4 @@ fi
 
 matchbox-window-manager &
 
-GUI_SESSION_PLACEHOLDEFR
+GUI_SESSION_PLACEHOLDER

@@ -59,7 +59,8 @@ fi
 [ -n "$BASE_ROOT_PARTITION" ] || BASE_ROOT_PARTITION=2
 
 # if set will enlarge root parition prior to build by provided size in MB
-[ -n "$BASE_IMAGE_ENLARGEROOT" ] || BASE_IMAGE_ENLARGEROOT=200
+# change 200 to 1000 for anbnkiOS
+[ -n "$BASE_IMAGE_ENLARGEROOT" ] || BASE_IMAGE_ENLARGEROOT=1000
 
 # if set will resize root partition on image after build to minimum size + 
 # provided size in MB
