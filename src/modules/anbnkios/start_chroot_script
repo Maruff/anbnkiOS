@@ -16,7 +16,7 @@ unpack /filesystem/root_init /
 apt-get update
 
 # Display a custom Splashscreen when booting the Rpi
-if [ "$FULLPAGEOS_CUSTOM_SPLASHSCREEN" == "yes" ]
+if [ "$ANBNKIOS_CUSTOM_SPLASHSCREEN" == "yes" ]
 then
     apt-get install -y fbi
     sed -i 's/$/ logo.nologo consoleblank=0 loglevel=0 quiet/' /boot/cmdline.txt
@@ -34,14 +34,14 @@ apt-get autoremove -y
 #apt-get tools
 apt-get -y --force-yes install python2.7 git screen checkinstall avahi-daemon libavahi-compat-libdnssd1 xterm xdotool vim expect
 
-if [ "$FULLPAGEOS_INCLUDE_CHROMIUM" == "yes" ]
+if [ "$ANBNKIOS_INCLUDE_CHROMIUM" == "yes" ]
 then
     apt-get install -y --force-yes chromium-browser
     sudo -u pi sed -i 's@%BROWSER_START_SCRIPT%@/home/pi/scripts/start_chromium_browser@g' /home/pi/scripts/run_onepageos
 fi
 
 #Install web stack
-if [ "$FULLPAGEOS_INCLUDE_LIGHTTPD" == "yes" ]
+if [ "$ANBNKIOS_INCLUDE_LIGHTTPD" == "yes" ]
 then
     apt-get install -y lighttpd php-common php-cgi php
     lighty-enable-mod fastcgi-php
@@ -52,9 +52,9 @@ then
     systemctl enable clear_lighttpd_cache.service
     pushd /var/www/html
         #Put git clones in place
-        if [ "$FULLPAGEOS_INCLUDE_DASHBOARD" == "yes" ]
+        if [ "$ANBNKIOS_INCLUDE_DASHBOARD" == "yes" ]
         then
-        gitclone FULLPAGEOS_DASHBOARD_REPO FullPageDashboard
+        gitclone ANBNKIOS_DASHBOARD_REPO FullPageDashboard
             chown -R pi:pi FullPageDashboard
             chown -R www-data:www-data FullPageDashboard
             chmod 775 FullPageDashboard
@@ -63,9 +63,9 @@ then
             popd
         fi
         #Set Welcome screen
-        if [ "$FULLPAGEOS_INCLUDE_WELCOME" == "yes" ]
+        if [ "$ANBNKIOS_INCLUDE_WELCOME" == "yes" ]
         then        
-            gitclone FULLPAGEOS_WELCOME_REPO welcome
+            gitclone ANBNKIOS_WELCOME_REPO welcome
             chown -R www-data:www-data welcome
         fi
     popd
@@ -77,30 +77,30 @@ fi
 
 
 #override timezone
-if [ "$FULLPAGEOS_OVERRIDE_TIMEZONE" != "default" ]
+if [ "$ANBNKIOS_OVERRIDE_TIMEZONE" != "default" ]
 then
-    ln -fs /usr/share/zoneinfo/"$FULLPAGEOS_OVERRIDE_TIMEZONE" /etc/localtime
+    ln -fs /usr/share/zoneinfo/"$ANBNKIOS_OVERRIDE_TIMEZONE" /etc/localtime
     dpkg-reconfigure -f noninteractive tzdata
 fi
 
 #override locale
-if [ "$FULLPAGEOS_OVERRIDE_LOCALE" != "default" ]
+if [ "$ANBNKIOS_OVERRIDE_LOCALE" != "default" ]
 then
-    sed -i '/^#.* '"$FULLPAGEOS_OVERRIDE_LOCALE"' /s/^# //' /etc/locale.gen
+    sed -i '/^#.* '"$ANBNKIOS_OVERRIDE_LOCALE"' /s/^# //' /etc/locale.gen
     locale-gen
-    update-locale LANG="$FULLPAGEOS_OVERRIDE_LOCALE"
+    update-locale LANG="$ANBNKIOS_OVERRIDE_LOCALE"
 fi
 
 #override keyboard model and layout
-if [ "$FULLPAGEOS_OVERRIDE_KBD_MODEL" != "default" ]
+if [ "$ANBNKIOS_OVERRIDE_KBD_MODEL" != "default" ]
 then
-    sed -i 's/^XKBMODEL=.*/XKBMODEL="'$FULLPAGEOS_OVERRIDE_KBD_MODEL'"/' /etc/default/keyboard
+    sed -i 's/^XKBMODEL=.*/XKBMODEL="'$ANBNKIOS_OVERRIDE_KBD_MODEL'"/' /etc/default/keyboard
 fi
-if [ "$FULLPAGEOS_OVERRIDE_KBD_LAYOUT" != "default" ]
+if [ "$ANBNKIOS_OVERRIDE_KBD_LAYOUT" != "default" ]
 then
-    sed -i 's/^XKBLAYOUT=.*/XKBLAYOUT="'$FULLPAGEOS_OVERRIDE_KBD_LAYOUT'"/' /etc/default/keyboard
+    sed -i 's/^XKBLAYOUT=.*/XKBLAYOUT="'$ANBNKIOS_OVERRIDE_KBD_LAYOUT'"/' /etc/default/keyboard
 fi
-if [ "$FULLPAGEOS_OVERRIDE_KBD_MODEL" != "default" ] || [ "$FULLPAGEOS_OVERRIDE_KBD_LAYOUT" != "default" ]
+if [ "$ANBNKIOS_OVERRIDE_KBD_MODEL" != "default" ] || [ "$ANBNKIOS_OVERRIDE_KBD_LAYOUT" != "default" ]
 then
     setupcon -k --save-only
 fi
@@ -110,24 +110,24 @@ sudo -u pi mkdir -p /home/pi/.fonts
 sudo -u pi wget --directory-prefix /home/pi/.fonts https://github.com/googlefonts/noto-emoji/raw/main/fonts/NotoColorEmoji.ttf
 
 #override password
-if [ "$FULLPAGEOS_OVERRIDE_PASSWORD" != "default" ]
+if [ "$ANBNKIOS_OVERRIDE_PASSWORD" != "default" ]
 then
     #root password
-    echo "pi:$FULLPAGEOS_OVERRIDE_PASSWORD" | chpasswd
+    echo "pi:$ANBNKIOS_OVERRIDE_PASSWORD" | chpasswd
 fi
 
 #Setup x11vnc
-if [ "$FULLPAGEOS_INCLUDE_X11VNC"  == "yes" ]
+if [ "$ANBNKIOS_INCLUDE_X11VNC"  == "yes" ]
 then
     apt-get install -y --force-yes x11vnc
 
     # Set x11vnc password
-    if [ "$FULLPAGEOS_OVERRIDE_PASSWORD" != "default" ]
+    if [ "$ANBNKIOS_OVERRIDE_PASSWORD" != "default" ]
     then
-        sudo -u pi /home/pi/scripts/setX11vncPass "$FULLPAGEOS_OVERRIDE_PASSWORD"
+        sudo -u pi /home/pi/scripts/setX11vncPass "$ANBNKIOS_OVERRIDE_PASSWORD"
         if [ ! -f /home/pi/.vnc/passwd ] || [ ! -s /home/pi/.vnc/passwd ]; then
           echo "/home/pi/.vnc/passwd was not created. Trying again."
-          sudo -u pi /home/pi/scripts/setX11vncPass "$FULLPAGEOS_OVERRIDE_PASSWORD"
+          sudo -u pi /home/pi/scripts/setX11vncPass "$ANBNKIOS_OVERRIDE_PASSWORD"
           if [ ! -f /home/pi/.vnc/passwd ] || [ ! -s /home/pi/.vnc/passwd ]; then
             echo "/home/pi/.vnc/passwd was not created again. Giving up."
             echo "Failed to set a VNC password. Aborting build."
