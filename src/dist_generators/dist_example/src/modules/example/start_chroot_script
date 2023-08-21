@@ -1,12 +1,10 @@
+
 #!/usr/bin/env bash
-# <Script Name>
-# <Description what this module does>
-# Written by <Author>
+# anbnkiOS generation script
+# Helper script that runs in a Raspbian/others chroot to create the anbnkiOS distro
+# Written by Guy Sheffer and updated by Esan Maruff <bmaruff at gmail dot com>
 # GPL V3
 ########
-
-
-# Source error handling, leave this in place
 set -x
 set -e
 
@@ -15,10 +13,158 @@ install_cleanup_trap
 
 unpack /filesystem/home/pi /home/"${BASE_USER}" "${BASE_USER}"
 unpack /filesystem/home/root /root root
+# unpack /filesystem/home/pi /home/pi pi
 unpack /filesystem/boot /boot
+unpack /filesystem/root_init /
 
-echo "This is an example module, install and set up what you need here!"
-echo "$EXAMPLE_VAR"
+apt-get update
 
-# Unpack root at the end, so files are modified before
-unpack /filesystem/root /
+# Display a custom Splashscreen when booting the Rpi
+if [ "$ANBNKIOS_CUSTOM_SPLASHSCREEN" == "yes" ]
+then
+    apt-get install -y fbi
+    sed -i 's/$/ logo.nologo consoleblank=0 loglevel=0 quiet/' /boot/cmdline.txt
+    echo "disable_splash=1" >> /boot/config.txt
+    systemctl enable splashscreen.service
+    systemctl disable getty@tty1
+fi
+
+remove_extra=$(remove_if_installed scratch squeak-plugins-scratch squeak-vm python-minecraftpi minecraft-pi sonic-pi oracle-java8-jdk bluej greenfoot libreoffice-common libreoffice-core freepats)
+
+apt-get remove -y --purge  $remove_extra
+
+apt-get autoremove -y
+
+#apt-get tools
+apt-get -y --force-yes install python2.7 git screen checkinstall avahi-daemon libavahi-compat-libdnssd1 xterm xdotool vim expect
+
+if [ "$ANBNKIOS_INCLUDE_CHROMIUM" == "yes" ]
+then
+    apt-get install -y --force-yes chromium-browser
+    sudo -u pi sed -i 's@%BROWSER_START_SCRIPT%@/home/pi/scripts/start_chromium_browser@g' /home/pi/scripts/run_onepageos
+fi
+
+#Install web stack
+if [ "$ANBNKIOS_INCLUDE_LIGHTTPD" == "yes" ]
+then
+    apt-get install -y lighttpd php-common php-cgi php
+    lighty-enable-mod fastcgi-php
+    #service lighttpd force-reload
+    chown -R www-data:www-data /var/www/html
+    chmod 775 /var/www/html
+    usermod -a -G www-data pi
+    systemctl enable clear_lighttpd_cache.service
+    pushd /var/www/html
+        #Put git clones in place
+        if [ "$ANBNKIOS_INCLUDE_DASHBOARD" == "yes" ]
+        then
+        gitclone ANBNKIOS_DASHBOARD_REPO FullPageDashboard
+            chown -R pi:pi FullPageDashboard
+            chown -R www-data:www-data FullPageDashboard
+            chmod 775 FullPageDashboard
+            pushd FullPageDashboard
+                sed -i "s@'INIT_URL_PATH', __DIR__ . '/init.txt'@'INIT_URL_PATH', '/boot/fullpagedashboard.txt'@g" config.php
+            popd
+        fi
+        #Set Welcome screen
+        if [ "$ANBNKIOS_INCLUDE_WELCOME" == "yes" ]
+        then        
+            gitclone ANBNKIOS_WELCOME_REPO welcome
+            chown -R www-data:www-data welcome
+        fi
+    popd
+    
+    echo "enabled" > /boot/check_for_httpd
+else
+    echo "disabled" > /boot/check_for_httpd
+fi
+
+
+#override timezone
+if [ "$ANBNKIOS_OVERRIDE_TIMEZONE" != "default" ]
+then
+    ln -fs /usr/share/zoneinfo/"$ANBNKIOS_OVERRIDE_TIMEZONE" /etc/localtime
+    dpkg-reconfigure -f noninteractive tzdata
+fi
+
+#override locale
+if [ "$ANBNKIOS_OVERRIDE_LOCALE" != "default" ]
+then
+    sed -i '/^#.* '"$ANBNKIOS_OVERRIDE_LOCALE"' /s/^# //' /etc/locale.gen
+    locale-gen
+    update-locale LANG="$ANBNKIOS_OVERRIDE_LOCALE"
+fi
+
+#override keyboard model and layout
+if [ "$ANBNKIOS_OVERRIDE_KBD_MODEL" != "default" ]
+then
+    sed -i 's/^XKBMODEL=.*/XKBMODEL="'$ANBNKIOS_OVERRIDE_KBD_MODEL'"/' /etc/default/keyboard
+fi
+if [ "$ANBNKIOS_OVERRIDE_KBD_LAYOUT" != "default" ]
+then
+    sed -i 's/^XKBLAYOUT=.*/XKBLAYOUT="'$ANBNKIOS_OVERRIDE_KBD_LAYOUT'"/' /etc/default/keyboard
+fi
+if [ "$ANBNKIOS_OVERRIDE_KBD_MODEL" != "default" ] || [ "$ANBNKIOS_OVERRIDE_KBD_LAYOUT" != "default" ]
+then
+    setupcon -k --save-only
+fi
+
+# Add emoji support
+sudo -u pi mkdir -p /home/pi/.fonts
+sudo -u pi wget --directory-prefix /home/pi/.fonts https://github.com/googlefonts/noto-emoji/raw/main/fonts/NotoColorEmoji.ttf
+
+#override password
+if [ "$ANBNKIOS_OVERRIDE_PASSWORD" != "default" ]
+then
+    #root password
+    echo "pi:$ANBNKIOS_OVERRIDE_PASSWORD" | chpasswd
+fi
+
+#Setup x11vnc
+if [ "$ANBNKIOS_INCLUDE_X11VNC"  == "yes" ]
+then
+    apt-get install -y --force-yes x11vnc
+
+    # Set x11vnc password
+    if [ "$ANBNKIOS_OVERRIDE_PASSWORD" != "default" ]
+    then
+        sudo -u pi /home/pi/scripts/setX11vncPass "$ANBNKIOS_OVERRIDE_PASSWORD"
+        if [ ! -f /home/pi/.vnc/passwd ] || [ ! -s /home/pi/.vnc/passwd ]; then
+          echo "/home/pi/.vnc/passwd was not created. Trying again."
+          sudo -u pi /home/pi/scripts/setX11vncPass "$ANBNKIOS_OVERRIDE_PASSWORD"
+          if [ ! -f /home/pi/.vnc/passwd ] || [ ! -s /home/pi/.vnc/passwd ]; then
+            echo "/home/pi/.vnc/passwd was not created again. Giving up."
+            echo "Failed to set a VNC password. Aborting build."
+            exit 1
+           fi
+        fi
+    else
+        sudo -u pi /home/pi/scripts/setX11vncPass raspberry
+        if [ ! -f /home/pi/.vnc/passwd ] || [ ! -s /home/pi/.vnc/passwd ]; then
+          echo "/home/pi/.vnc/passwd was not created. Trying again."
+          sudo -u pi /home/pi/scripts/setX11vncPass raspberry
+          if [ ! -f /home/pi/.vnc/passwd ] || [ ! -s /home/pi/.vnc/passwd ]; then
+            echo "/home/pi/.vnc/passwd was not created again. Giving up."
+            echo "Failed to set a VNC password. Aborting build."
+            exit 1
+          fi
+        fi
+    fi
+    ls -l /home/pi/.vnc/passwd
+
+    #Enable x11vnc service
+    systemctl enable x11vnc.service
+fi
+
+#echo "sudo -u pi startx /home/pi/scripts/run_onepageos &" >> /etc/rc.local
+#echo "(sleep 15 ; sudo -u pi /home/pi/scripts/fullscreen) &" >> /etc/rc.local
+
+#####################################################################
+### setup services
+
+echo "server time.nist.gov" >> /etc/ntp.conf
+echo "server ntp.ubuntu.com" >> /etc/ntp.conf
+
+#cleanup
+apt-get clean
+apt-get autoremove -y
