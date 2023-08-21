@@ -1,11 +1,18 @@
-export DIST_NAME=ExampleOS
+export DIST_NAME=anbnkiOS
 export DIST_VERSION=0.1.0
+
+# if set will enlarge root parition prior to build by provided size in MB
+export BASE_IMAGE_ENLARGEROOT=1000
+
+# if set will resize root partition on image after build to minimum size + 
+# provided size in MB
+export BASE_IMAGE_RESIZEROOT=200
+export GUI_STARTUP_SCRIPT=/home/pi/scripts/run_onepageos
 
 # rpi-imager json generator settings
 export RPI_IMAGER_NAME="${DIST_NAME}"
-export RPI_IMAGER_DESCRIPTION="A raspberrypi distro built with anbnkiOS"
+export RPI_IMAGER_DESCRIPTION="A raspberrypi distro built with anbnkiOS to display a full page browser on boot"
 export RPI_IMAGER_WEBSITE="https://github.com/Maruff/anbnkiOS"
 export RPI_IMAGER_ICON="https://raw.githubusercontent.com/Maruff/anbnkiOS/devel/media/rpi-imager-anbnkiOS.png"
 
-export MODULES="base(network,example)"
-
+export MODULES="base(raspicam, network, disable-services(gui(anbnkios), usage-statistics))"
