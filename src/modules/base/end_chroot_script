@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Base script
 # Basic and manditory settings for the base of a anbnkiOS build
-# Written by Guy Sheffer <Maruff at gmail dot com>
+# Written by Guy Sheffer and updated by Esan Maruff <bmaruff gmail dot com>
 # GPL V3
 ########
 set -ex

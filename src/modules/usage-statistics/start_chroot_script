@@ -3,7 +3,7 @@ set -x
 set -e
 # anbnkiOS usage-statistics module
 # Send anonymous statistics of a distro
-# Written by Guy Sheffer <Maruff at gmail dot com>
+# Written by Guy Sheffer and updated by Esan Maruff <bmaruff gmail dot com>
 # GPL V3
 ########
 

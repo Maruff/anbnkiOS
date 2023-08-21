@@ -1,9 +1,9 @@
 ########################################################################################
 #
 #  admin-toolkit helps to harden your pi, install other packages easily, and add files out of the box.
-#  Some things require a user to be added and others dont. Some things are indended to be used with FullPageOS
+#  Some things require a user to be added and others dont. Some things are indended to be used with anbnkiOS
 #  and the scripts that come with it, but there are uses outside of that, if you edit a bit of code.
-#  This has only been used with FullPageOS, and Raspbian Buster on a pi4
+#  This has only been used with anbnkiOS, and Raspbian Buster on a pi4
 #
 #  Written by asdfinit
 #  GPL V3
@@ -39,7 +39,7 @@
 [ -n "$ADMIN_TOOLKIT_PI_NO_SUDO" ] ||  ADMIN_TOOLKIT_PI_NO_SUDO=no
 
 #  Hostname change script. Script will be added to the users home directory.
-#  Run this to change the hostname and it will auto-fix the FullPageOS chromium locked profile on reboot.
+#  Run this to change the hostname and it will auto-fix the anbnkiOS chromium locked profile on reboot.
 #  "yes" to include
 ADMIN_TOOLKIT_HOSTNAME_CHANGE_SCRIPT=no
 
@@ -65,7 +65,7 @@ ADMIN_TOOLKIT_HOSTNAME_CHANGE_SCRIPT=no
 ######### User Not Required ###############################
 #
 #  Nothing below requires an admin user to be added.
-#  But it might depend on FullPageOS
+#  But it might depend on anbnkiOS
 ##########################################################
 
 
@@ -101,11 +101,11 @@ ADMIN_TOOLKIT_HOSTNAME_CHANGE_SCRIPT=no
 #  You can remove it without any issues. "yes" to configure
 [ -n "$ADMIN_TOOLKIT_REMOVE_NETWORK_MANAGER" ] || ADMIN_TOOLKIT_REMOVE_NETWORK_MANAGER=no
 
-######### FullPageOS Hdmi Scripts ########################
+######### anbnkiOS Hdmi Scripts ########################
 #  These can be used to turn TV's on and off. Use with cron jobs
 #  for automation. Works on most devices but not all.
 #  Installs in the /home/pi/scripts dir and makes use of
-#  pre written scripts in FullPageOS. "yes" to configure
+#  pre written scripts in anbnkiOS. "yes" to configure
 [ -n "$ADMIN_TOOLKIT_HDMI_SCRIPTS" ] || ADMIN_TOOLKIT_HDMI_SCRIPTS=no
 
 ######### Install Cron Job #############################

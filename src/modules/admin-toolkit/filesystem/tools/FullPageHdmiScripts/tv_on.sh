@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # this scrpit is from the anbnkiOS admin-toolkit module.
-# it is meant to be used in conjunction with FullPageOS fullscreen script
+# it is meant to be used in conjunction with anbnkiOS fullscreen script
 
 tvservice -p
 sleep 5

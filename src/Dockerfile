@@ -1,6 +1,6 @@
 FROM debian:bullseye-backports
 
-MAINTAINER Guy Sheffer <Maruff at gmail dot com>
+MAINTAINER Esan Maruff <bmaruff gmail dot com>
 
 RUN set -x \
     && apt-get update && apt-get install -y \

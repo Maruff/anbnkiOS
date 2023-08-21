@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # anbnkiOS auto-mount-removable media module
 # Script sets that devices would be automatically mounted to /media
-# Written by Guy Sheffer <Maruff at gmail dot com>
+# Written by Guy Sheffer and updated by Esan Maruff <bmaruff gmail dot com>
 # GPL V3
 ########
 set -x

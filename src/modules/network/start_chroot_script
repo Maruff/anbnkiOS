@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Network
 # Adds to /boot configuration files that let you set up wifi network before booting
-# Written by Guy Sheffer <Maruff at gmail dot com> and Gina Häußge <gina@octoprint.org>
+# Written by Guy Sheffer and updated by Esan Maruff <bmaruff gmail dot com> and Gina Häußge <gina@octoprint.org>
 # GPL V3
 ########
 set -x

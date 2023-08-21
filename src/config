@@ -109,7 +109,7 @@ do
     echo "================================================================"
 done
 
-## export MODULES="base(raspicam, network, disable-services(gui(fullpageos), usage-statistics))"
+## export MODULES="base(raspicam, network, disable-services(gui(anbnkios), usage-statistics))"
 
 # if set will enlarge root parition prior to build by provided size in MB
 # export BASE_IMAGE_ENLARGEROOT=1000

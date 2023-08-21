@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Custom Kernel Build start script
 # Custom RaspberryPi Kernel builder
-# Written by Guy Sheffer <Maruff at gmail dot com>
+# Written by Guy Sheffer and updated by Esan Maruff <bmaruff gmail dot com>
 # GPL V3
 ########
 

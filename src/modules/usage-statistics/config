@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # anbnkiOS usage-statistics module
 # Send anonymous statistics of a distro
-# Customized by Guy Sheffer <bmaruff at gmail dot com>
+# Customized by Esan Maruff <bmaruff at gmail dot com>
 # GPL V3
 ########
 

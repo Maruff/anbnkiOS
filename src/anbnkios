@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # OctoPi generation script
 # This script takes a Raspbian image and adds to it octoprint and verions addons
-# Written by Guy Sheffer <Maruff at gmail dot com>
+# Written by Guy Sheffer and updated by Esan Maruff <bmaruff gmail dot com>
 # GPL V3
 set -e
 
