@@ -123,7 +123,8 @@ fi
 #Setup x11vnc
 if [ "$ANBNKIOS_INCLUDE_X11VNC"  == "yes" ]
 then
-    apt-get install -y --force-yes x11vnc
+#    apt-get install -y --force-yes x11vnc
+    apt-get install -y --allow x11vnc
 
     # Set x11vnc password
     if [ "$ANBNKIOS_OVERRIDE_PASSWORD" != "default" ]
