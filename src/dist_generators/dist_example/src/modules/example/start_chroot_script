@@ -129,10 +129,10 @@ then
     # Set x11vnc password
     if [ "$ANBNKIOS_OVERRIDE_PASSWORD" != "default" ]
     then
-        sudo -u pi "${ANBN_KI_OS_PATH}"/home/pi/scripts/setX11vncPass "$ANBNKIOS_OVERRIDE_PASSWORD"
+        sudo -u pi /home/pi/scripts/setX11vncPass "$ANBNKIOS_OVERRIDE_PASSWORD"
         if [ ! -f /home/pi/.vnc/passwd ] || [ ! -s /home/pi/.vnc/passwd ]; then
           echo "/home/pi/.vnc/passwd was not created. Trying again."
-          sudo -u "${ANBN_KI_OS_PATH}"pi /home/pi/scripts/setX11vncPass "$ANBNKIOS_OVERRIDE_PASSWORD"
+          sudo -u pi /home/pi/scripts/setX11vncPass "$ANBNKIOS_OVERRIDE_PASSWORD"
           if [ ! -f /home/pi/.vnc/passwd ] || [ ! -s /home/pi/.vnc/passwd ]; then
             echo "/home/pi/.vnc/passwd was not created again. Giving up."
             echo "Failed to set a VNC password. Aborting build."
@@ -140,10 +140,10 @@ then
            fi
         fi
     else
-        sudo -u pi "${ANBN_KI_OS_PATH}"/home/pi/scripts/setX11vncPass raspberry
+        sudo -u pi /home/pi/scripts/setX11vncPass raspberry
         if [ ! -f /home/pi/.vnc/passwd ] || [ ! -s /home/pi/.vnc/passwd ]; then
           echo "/home/pi/.vnc/passwd was not created. Trying again."
-          sudo -u pi "${ANBN_KI_OS_PATH}"/home/pi/scripts/setX11vncPass raspberry
+          sudo -u pi /home/pi/scripts/setX11vncPass raspberry
           if [ ! -f /home/pi/.vnc/passwd ] || [ ! -s /home/pi/.vnc/passwd ]; then
             echo "/home/pi/.vnc/passwd was not created again. Giving up."
             echo "Failed to set a VNC password. Aborting build."
