@@ -126,8 +126,8 @@ then
 #    apt-get install -y --force-yes x11vnc
     apt-get install -y x11vnc
 
-    # Set x11vnc password
-    if [ "$ANBNKIOS_OVERRIDE_PASSWORD" != "default" ]
+    # Set x11vnc password #default
+    if [ "$ANBNKIOS_OVERRIDE_PASSWORD" != "raspberry" ]
     then
         sudo -u pi /home/pi/scripts/setX11vncPass "$ANBNKIOS_OVERRIDE_PASSWORD"
         if [ ! -f /home/pi/.vnc/passwd ] || [ ! -s /home/pi/.vnc/passwd ]; then
