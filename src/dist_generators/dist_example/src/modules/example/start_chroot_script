@@ -126,31 +126,7 @@ then
 #    apt-get install -y --force-yes x11vnc
     apt-get install -y x11vnc
 
-    # Set x11vnc password #default
-    if [ "$ANBNKIOS_OVERRIDE_PASSWORD" != "raspberry" ]
-    then
-        sudo -u pi /home/pi/scripts/setX11vncPass "$ANBNKIOS_OVERRIDE_PASSWORD"
-        if [ ! -f /home/pi/.vnc/passwd ] || [ ! -s /home/pi/.vnc/passwd ]; then
-          echo "/home/pi/.vnc/passwd was not created. Trying again."
-          sudo -u pi /home/pi/scripts/setX11vncPass "$ANBNKIOS_OVERRIDE_PASSWORD"
-          if [ ! -f /home/pi/.vnc/passwd ] || [ ! -s /home/pi/.vnc/passwd ]; then
-            echo "/home/pi/.vnc/passwd was not created again. Giving up."
-            echo "Failed to set a VNC password. Aborting build."
-            exit 1
-           fi
-        fi
-    else
-        sudo -u pi /home/pi/scripts/setX11vncPass raspberry
-        if [ ! -f /home/pi/.vnc/passwd ] || [ ! -s /home/pi/.vnc/passwd ]; then
-          echo "/home/pi/.vnc/passwd was not created. Trying again."
-          sudo -u pi /home/pi/scripts/setX11vncPass raspberry
-          if [ ! -f /home/pi/.vnc/passwd ] || [ ! -s /home/pi/.vnc/passwd ]; then
-            echo "/home/pi/.vnc/passwd was not created again. Giving up."
-            echo "Failed to set a VNC password. Aborting build."
-            exit 1
-          fi
-        fi
-    fi
+    # Set x11vnc password #default, deleted the code block if
     ls -l /home/pi/.vnc/passwd
 
     #Enable x11vnc service
