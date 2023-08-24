@@ -127,7 +127,7 @@ then
     apt-get install -y x11vnc
 
     # Set x11vnc password #default, deleted the code block if
-    ls -l /home/pi/.vnc/passwd
+    # ls -l /home/pi/.vnc/passwd
 
     #Enable x11vnc service
     systemctl enable x11vnc.service
